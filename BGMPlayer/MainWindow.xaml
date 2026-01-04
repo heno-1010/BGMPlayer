@@ -18,21 +18,11 @@
         </Grid.RowDefinitions>
         <DockPanel Grid.Row="0" Grid.Column="0" Margin="0,0,0,5">
             <Button x:Name="ButtonGo" DockPanel.Dock="Right" Click="ButtonGo_Click" Content="Go"/>
-            <TextBox Name="addressBar" Width="Auto"/>
+            <TextBox x:Name="addressBar" Width="Auto" Cursor="IBeam"/>
         </DockPanel>
         <wv2:WebView2 Grid.Row="1" Grid.Column="0" Name="webView" Source="https://www.youtube.com" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
         <TextBlock Grid.Row="0" Grid.Column="1" Text="Playlist" FontWeight="Bold" FontSize="16" Margin="0,0,0,5" HorizontalAlignment="Center"/>
-        <ListBox Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Name="playlistBox" VerticalAlignment="Stretch">
-            <ListBoxItem>Item 1</ListBoxItem>
-            <ListBoxItem>Item 2</ListBoxItem>
-            <ListBoxItem>Item 3</ListBoxItem>
-            <ListBoxItem>Item 4</ListBoxItem>
-            <ListBoxItem>Item 5</ListBoxItem>
-            <ListBoxItem>Item 6</ListBoxItem>
-            <ListBoxItem>Item 7</ListBoxItem>
-            <ListBoxItem>Item 8</ListBoxItem>
-            <ListBoxItem>Item 9</ListBoxItem>
-            <ListBoxItem>Item 10</ListBoxItem>
+        <ListBox Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Name="playlistBox" VerticalAlignment="Stretch" SelectionChanged="playlistBox_SelectionChanged">
         </ListBox>
     </Grid>
 </Window>

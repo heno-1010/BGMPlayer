@@ -20,6 +20,14 @@ namespace BGMPlayer
         public MainWindow()
         {
             InitializeComponent();
+
+            VideoItem[] VideoList = new VideoItem[]
+            {
+                new VideoItem("【音楽的同位体】月光 / V.I.P", "https://youtu.be/K0QKls5uVMM"),
+                new VideoItem("Stella", "https://youtu.be/CYZfhj-LDRk?list=RDCYZfhj-LDRk"),
+            };
+            playlistBox.ItemsSource = VideoList;
+            playlistBox.DisplayMemberPath = "VideoTitle";
         }
         private void ButtonGo_Click(object sender, RoutedEventArgs e)
         {
@@ -33,6 +41,18 @@ namespace BGMPlayer
             catch
             {
                 return;
+            }
+        }
+
+        private void playlistBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(playlistBox.SelectedItem != null)
+            {
+                var selectedItem = playlistBox.SelectedItem as VideoItem;
+                if (selectedItem != null)
+                {
+                    addressBar.Text = selectedItem.VideoUrl;
+                }
             }
         }
     }
