@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Web.WebView2.Core;
 
 namespace BGMPlayer
 {
@@ -19,6 +20,13 @@ namespace BGMPlayer
         public MainWindow()
         {
             InitializeComponent();
+        }
+        private void ButtonGo_Click(object sender, RoutedEventArgs e)
+        {
+            if (webView != null && webView.CoreWebView2 != null)
+            {
+                webView.CoreWebView2.Navigate(addressBar.Text);
+            }
         }
     }
 }
