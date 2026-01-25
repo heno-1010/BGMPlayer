@@ -7,21 +7,28 @@
         xmlns:local="clr-namespace:BGMPlayer"
         mc:Ignorable="d"
         Title="MainWindow" Height="464" Width="862">
-    <Grid Margin="10">
+    <Grid Margin="15">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="250"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <DockPanel Grid.Row="0" Grid.Column="0" Margin="0,0,0,5">
+        <DockPanel Grid.Row="0" Grid.Column="0" Margin="0,0,10,5">
             <Button x:Name="ButtonGo" DockPanel.Dock="Right" Click="ButtonGo_Click" Content="Go"/>
-            <TextBox x:Name="addressBar" Width="Auto" Cursor="IBeam"/>
+            <TextBox x:Name="addressBar" Width="Auto" Cursor="IBeam" Margin="0,0,5,0"/>
         </DockPanel>
         <wv2:WebView2 Grid.Row="1" Grid.Column="0" Name="webView" Source="https://www.youtube.com" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
-        <TextBlock Grid.Row="0" Grid.Column="1" Text="Playlist" FontWeight="Bold" FontSize="16" Margin="0,0,0,5" HorizontalAlignment="Center"/>
+
+        <DockPanel Grid.Row="0" Grid.Column="1" Margin="10,0,0,5">
+            <TextBlock Text="Playlist" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <StackPanel DockPanel.Dock="Bottom" HorizontalAlignment="Right" Orientation="Horizontal">
+                <Button Content="+" FontSize="16" Margin="0,0,5,0" MaxHeight="30"/>
+                <Button Content="-" FontSize="16" MaxHeight="30"/>
+            </StackPanel>
+        </DockPanel>
         <ListBox Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Name="playlistBox" VerticalAlignment="Stretch" SelectionChanged="playlistBox_SelectionChanged">
         </ListBox>
     </Grid>
