@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using System.IO;
+using System.Text;
+using System.Text.Json;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -21,13 +23,18 @@ namespace BGMPlayer
         {
             InitializeComponent();
 
-            VideoItem[] VideoList = new VideoItem[]
+            string filepath = "playlist.json";
+            if (File.Exists(filepath))
             {
-                new VideoItem("【音楽的同位体】月光 / V.I.P", "https://youtu.be/K0QKls5uVMM"),
-                new VideoItem("Stella", "https://youtu.be/CYZfhj-LDRk?list=RDCYZfhj-LDRk"),
-            };
-            playlistBox.ItemsSource = VideoList;
-            playlistBox.DisplayMemberPath = "VideoTitle";
+                string json = File.ReadAllText(filepath, Encoding.UTF8);
+                Playlist playlist = JsonSerializer.Deserialize<Playlist>(json);
+                playlistBox.ItemsSource = playlist.videos;
+                playlistBox.DisplayMemberPath = "VideoTitle";
+            }
+            else
+            {
+                MessageBox.Show("Playlistが見つかりません");
+            }
         }
         private void ButtonGo_Click(object sender, RoutedEventArgs e)
         {

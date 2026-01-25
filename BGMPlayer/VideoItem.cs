@@ -6,13 +6,8 @@ namespace BGMPlayer
 {
     public class VideoItem
     { 
-        public string VideoTitle { get; set; }
-        public string VideoUrl { get; set; }
+        public required string VideoTitle { get; set; }
+        public required string VideoUrl { get; set; }
 
-        public VideoItem(string name, string url)
-        {
-            VideoTitle = name;
-            VideoUrl = url;
-        }
     }
 }
