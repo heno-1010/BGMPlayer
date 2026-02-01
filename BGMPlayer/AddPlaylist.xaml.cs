@@ -21,5 +21,10 @@ namespace BGMPlayer
         {
             InitializeComponent();
         }
+
+        public void AddToPlaylistButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
