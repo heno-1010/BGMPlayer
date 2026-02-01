@@ -62,5 +62,17 @@ namespace BGMPlayer
                 }
             }
         }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            var AddPlaylistWindow = new AddPlaylist();
+            AddPlaylistWindow.Owner = this;
+            AddPlaylistWindow.ShowDialog();
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
