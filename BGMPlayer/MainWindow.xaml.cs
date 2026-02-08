@@ -72,7 +72,37 @@ namespace BGMPlayer
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
+            if (playlistBox.SelectedItem != null)
+            {
+                var selectedItem = playlistBox.SelectedItem as VideoItem;
+                if (selectedItem != null)
+                {
+                    string filePath = "playlist.json";
+                    List<VideoItem> playlist = new List<VideoItem>();
 
+                    if (File.Exists(filePath))
+                    {
+                        string json = File.ReadAllText(filePath, Encoding.UTF8);
+                        Playlist existingPlaylist = JsonSerializer.Deserialize<Playlist>(json);
+                        playlist = existingPlaylist.videos ?? new List<VideoItem>();
+                    }
+                    playlist.Remove(selectedItem);
+
+                    Playlist updatedPlaylist = new Playlist
+                    {
+                        videos = playlist
+                    };
+                    var options = new JsonSerializerOptions
+                    {
+                        WriteIndented = true
+                    };
+                    string updatedJson = JsonSerializer.Serialize(updatedPlaylist, options);
+                    File.WriteAllText(filePath, updatedJson, Encoding.UTF8);
+
+                    UpdatePlaylist();
+                    MessageBox.Show("選択した動画をプレイリストから削除しました。", "情報", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
         }
         public void UpdatePlaylist()
         {
@@ -83,6 +113,8 @@ namespace BGMPlayer
                 {
                     string json = File.ReadAllText(filepath, Encoding.UTF8);
                     Playlist playlist = JsonSerializer.Deserialize<Playlist>(json);
+
+                    playlistBox.ItemsSource = null;
                     playlistBox.ItemsSource = playlist.videos;
                 }
                 else
