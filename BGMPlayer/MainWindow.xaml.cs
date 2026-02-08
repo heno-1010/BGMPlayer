@@ -74,5 +74,26 @@ namespace BGMPlayer
         {
 
         }
+        public void UpdatePlaylist()
+        {
+            try
+            {
+                string filepath = "playlist.json";
+                if (File.Exists(filepath))
+                {
+                    string json = File.ReadAllText(filepath, Encoding.UTF8);
+                    Playlist playlist = JsonSerializer.Deserialize<Playlist>(json);
+                    playlistBox.ItemsSource = playlist.videos;
+                }
+                else
+                {
+                    MessageBox.Show("Playlistが見つかりません", "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"プレイリストの更新中にエラーが発生しました: {ex.Message}", "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
     }
 }

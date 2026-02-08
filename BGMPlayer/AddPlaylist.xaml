@@ -10,7 +10,7 @@
         <Label Content="Video Title:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
         <TextBox x:Name="PlaylistNameTextBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,5,0,0" Width="360"/>
         <Label Content="Video URL" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
-        <TextBox x:Name="PlaylistURLTextBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,5,0,0" Width="360"/>
+        <TextBox x:Name="PlaylistUrlTextBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,5,0,0" Width="360"/>
 
         <Button Content="Add to Playlist" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0" Width="120" Click="AddToPlaylistButton_Click"/>
     </StackPanel>
